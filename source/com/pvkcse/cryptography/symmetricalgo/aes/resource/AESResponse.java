@@ -1,6 +1,6 @@
 package com.pvkcse.cryptography.symmetricalgo.aes.resource;
 
-import com.pvkcse.cryptography.symmetricalgo.aes.resource.enums.AESVariant;
+import com.pvkcse.cryptography.symmetricalgo.aes.resource.enums.AESMode;
 import com.pvkcse.cryptography.symmetricalgo.aes.resource.enums.Encoder;
 import com.pvkcse.cryptography.symmetricalgo.aes.resource.enums.Padding;
 
@@ -10,7 +10,7 @@ public class AESResponse
 
 	private String plaintText;
 
-	private AESVariant aesVariant;
+	private AESMode aesMode;
 
 	private Padding padding;
 
@@ -33,9 +33,9 @@ public class AESResponse
 		return plaintText;
 	}
 
-	public AESVariant getAesVariant()
+	public AESMode getAesMode()
 	{
-		return aesVariant;
+		return aesMode;
 	}
 
 	public Padding getPadding()
@@ -57,7 +57,7 @@ public class AESResponse
 	{
 		private String key;
 		private String plaintText;
-		private AESVariant aesVariant;
+		private AESMode aesMode;
 		private Padding padding;
 		private Encoder encoder;
 		private String cipher;
@@ -89,9 +89,9 @@ public class AESResponse
 			return this;
 		}
 
-		public AESResponse.Builder withAesVariant(AESVariant aesVariant)
+		public AESResponse.Builder withAesMode(AESMode aesMode)
 		{
-			this.aesVariant = aesVariant;
+			this.aesMode = aesMode;
 			return this;
 		}
 
@@ -114,7 +114,7 @@ public class AESResponse
 			aesResponse.key = this.key;
 			aesResponse.encoder = this.encoder;
 			aesResponse.plaintText = this.plaintText;
-			aesResponse.aesVariant = this.aesVariant;
+			aesResponse.aesMode = this.aesMode;
 			aesResponse.cipher = this.cipher;
 			return aesResponse;
 		}

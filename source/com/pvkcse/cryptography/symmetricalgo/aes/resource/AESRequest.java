@@ -1,6 +1,6 @@
 package com.pvkcse.cryptography.symmetricalgo.aes.resource;
 
-import com.pvkcse.cryptography.symmetricalgo.aes.resource.enums.AESVariant;
+import com.pvkcse.cryptography.symmetricalgo.aes.resource.enums.AESMode;
 import com.pvkcse.cryptography.symmetricalgo.aes.resource.enums.Encoder;
 import com.pvkcse.cryptography.symmetricalgo.aes.resource.enums.Padding;
 
@@ -10,7 +10,7 @@ public class AESRequest
 
 	private String plaintText;
 
-	private AESVariant aesVariant;
+	private AESMode aesMode;
 
 	private Padding padding;
 
@@ -31,9 +31,9 @@ public class AESRequest
 		return plaintText;
 	}
 
-	public AESVariant getAesVariant()
+	public AESMode getAesMode()
 	{
-		return aesVariant;
+		return aesMode;
 	}
 
 	public Padding getPadding()
@@ -50,7 +50,7 @@ public class AESRequest
 	{
 		private String key;
 		private String plaintText;
-		private AESVariant aesVariant;
+		private AESMode aesMode;
 		private Padding padding;
 		private Encoder encoder;
 
@@ -75,9 +75,9 @@ public class AESRequest
 			return this;
 		}
 
-		public Builder withAesVariant(AESVariant aesVariant)
+		public Builder withAesMode(AESMode aesMode)
 		{
-			this.aesVariant = aesVariant;
+			this.aesMode = aesMode;
 			return this;
 		}
 
@@ -100,7 +100,7 @@ public class AESRequest
 			aESRequest.key = this.key;
 			aESRequest.encoder = this.encoder;
 			aESRequest.plaintText = this.plaintText;
-			aESRequest.aesVariant = this.aesVariant;
+			aESRequest.aesMode = this.aesMode;
 			return aESRequest;
 		}
 	}
