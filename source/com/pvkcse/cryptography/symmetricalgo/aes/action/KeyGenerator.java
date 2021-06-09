@@ -8,13 +8,28 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
+import com.pvkcse.cryptography.helpers.CryptoException;
+import com.pvkcse.cryptography.symmetricalgo.aes.helpers.AESExceptionStore;
 import com.pvkcse.cryptography.symmetricalgo.aes.resource.KeySpec;
 
 public class KeyGenerator
 {
-	public static SecretKey doGetAESKey(KeySpec spec) throws NoSuchAlgorithmException, InvalidKeySpecException
+	public static SecretKey doGetAESKey(KeySpec spec) throws CryptoException
 	{
-		return spec.canGenerateKeyFromPassword() ? Util.generateKeyFromPassword(spec) : Util.generateKey(spec);
+		try
+		{
+			return spec.canGenerateKeyFromPassword() ? Util.generateKeyFromPassword(spec) : Util.generateKey(spec);
+		}
+		catch(NoSuchAlgorithmException | InvalidKeySpecException algoEx)
+		{
+			AESExceptionStore.KEY_GENERATION_EXCEPTION.doThrow(algoEx);
+		}
+		catch(Exception ex)
+		{
+			AESExceptionStore.INTERNAL_ERROR_OCCURED.doThrow(ex);
+		}
+
+		return null;
 	}
 
 	private static final class Util
