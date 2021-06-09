@@ -10,11 +10,34 @@ public class KeySpec
 
 	private String password;
 
+	private String salt;
+
+	public KeySize getKeySize()
+	{
+		return keySize;
+	}
+
+	public boolean canGenerateKeyFromPassword()
+	{
+		return canGenerateKeyFromPassword;
+	}
+
+	public String getPassword()
+	{
+		return password;
+	}
+
+	public String getSalt()
+	{
+		return salt;
+	}
+
 	public static final class Builder
 	{
 		private KeySize keySize;
 		private boolean canGenerateKeyFromPassword;
 		private String password;
+		private String salt;
 
 		private Builder()
 		{
@@ -43,12 +66,19 @@ public class KeySpec
 			return this;
 		}
 
+		public Builder withSalt(String salt)
+		{
+			this.password = password;
+			return this;
+		}
+
 		public KeySpec build()
 		{
 			KeySpec keySpec = new KeySpec();
 			keySpec.canGenerateKeyFromPassword = this.canGenerateKeyFromPassword;
 			keySpec.keySize = this.keySize;
 			keySpec.password = this.password;
+			keySpec.password = password;
 			return keySpec;
 		}
 	}
