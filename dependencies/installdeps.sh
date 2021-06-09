@@ -1,10 +1,11 @@
 #########################################
 #Author: Vijay Kumar Ponraj
-#Usage: sh installdeps.sh -algo=aes
+#Usage: sh installdeps.sh aes.txt
 #########################################
 
 #!/bin/bash
 
-while read aes.txt; do
+cd dependencies
+while read url; do
     wget $url
-done < depsdownload.log
+done < $1
