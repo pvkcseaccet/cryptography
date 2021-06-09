@@ -12,7 +12,7 @@ import com.pvkcse.cryptography.symmetricalgo.aes.resource.KeySpec;
 
 public class KeyGenerator
 {
-	public static SecretKey doGenerateAESKey(KeySpec spec) throws NoSuchAlgorithmException, InvalidKeySpecException
+	public static SecretKey doGetAESKey(KeySpec spec) throws NoSuchAlgorithmException, InvalidKeySpecException
 	{
 		return spec.canGenerateKeyFromPassword() ? Util.generateKeyFromPassword(spec) : Util.generateKey(spec);
 	}
